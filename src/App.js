@@ -5,6 +5,13 @@ import { marked } from 'marked';
 
 function App() {
 
+  const [darkMode , setDarkMode] = useState(false);
+
+  const toggleMode = () => {
+    setDarkMode(!darkMode);
+  }
+
+
   const [markdown , setMarkdown] = useState(`
 
   # Welcome to my React Markdown Previewer!
@@ -12,41 +19,57 @@ function App() {
   ## This is a sub-heading...
   ### And here's some other cool stuff:
 
-  Heres some code, \`<div></div>\`, between 2 backticks.
-
-
   [title](https://www.example.com)
 
-  \`code\`
-  \`\`\`
+  Heres some code, \`<div></div>\`, between 2 backticks.
+
+  \`
+  // this is multi-line code:
+  \`
+  \`
   {
     "FirstName": "Luciano",
     "LastName": "Alessi",
     "Age": "27"
   }
-  \`\`\`
+  \`
 
-  - First item
-  - Second item
-  - Third item
+  You can also make text **bold**... whoa!
 
-  > blockquote
+  Or _italic_.
+
+  Or... wait for it... **_both!_**
+
+  And feel free to go crazy ~~crossing stuff out~~.
+
+  > Block Quotes!
+
+  - And of course there are lists.
+    - Some are bulleted.
+      - With different indentation levels.
+        - That look like this.
 
   ![alt text](image.jpg)
-  
+    
+  1. And there are numbered lists too.
+  1. Use just 1s if you want! 
   `)
+
+  marked.setOptions({
+    breaks:true
+  });
 
   var inputStyle = {
     width: "500px",
-    height: "80vh",
+    minHeight: "85vh",
     marginLeft: "auto",
     marginRight: "auto",
     padding:"10px",
     fontSize:"15px"
   };
   var outputStyle = {
-    width: "700px",
-    height: "80vh",
+    width: "650px",
+    minHeight: "85vh",
     backgroundColor: "#DCDCDC",
     marginLeft: "auto",
     marginRight: "auto",
@@ -59,8 +82,8 @@ function App() {
 
 
   return (
-    <div className="App vh-100 bg-dark text-white">
-      <div className='container' >
+    <div className={`App vh-100 ${darkMode ? 'bg-dark' : 'light'}`}>
+      <div className='container-fluid'>
         <div className='row mt-4'>
           <div className="col text-center">
             <h1>
@@ -68,6 +91,9 @@ function App() {
               Markdown previewer
             </Badge>
             </h1>
+            <button className='btn btn-primary text-align-right' onClick={toggleMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
           </div>
         </div>
 
