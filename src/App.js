@@ -11,31 +11,27 @@ function App() {
   const [markdown , setMarkdown] = useState(`
 
   # Welcome to my React Markdown Previewer!
-
   ## This is a sub-heading...
   ### And here's some other cool stuff:
 
   [title](https://www.example.com)
-
+  
   Heres some code, \`<div></div>\`, between 2 backticks.
-
   \`
   // this is multi-line code:
   \`
-  \`
+  \`\`\`
   {
     "FirstName": "Luciano",
     "LastName": "Alessi",
     "Age": "27"
   }
-  \`
+  \`\`\`
 
   You can also make text **bold**... whoa!
 
   Or _italic_.
-
   Or... wait for it... **_both!_**
-
   And feel free to go crazy ~~crossing stuff out~~.
 
   > Block Quotes!
@@ -46,7 +42,7 @@ function App() {
         - That look like this.
 
   ![alt text](image.jpg)
-    
+
   1. And there are numbered lists too.
   1. Use just 1s if you want! 
   `)
