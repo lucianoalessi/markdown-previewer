@@ -8,11 +8,6 @@ import { faMoon ,faSun } from '@fortawesome/free-regular-svg-icons';
 function App() {
 
   const [darkMode , setDarkMode] = useState(false);
-
-  const toggleMode = () => {
-    setDarkMode(!darkMode);
-  }
-
   const [markdown , setMarkdown] = useState(`
 
   # Welcome to my React Markdown Previewer!
@@ -56,9 +51,19 @@ function App() {
   1. Use just 1s if you want! 
   `)
 
+  //event listener
+
+  const toggleMode = () => {
+    setDarkMode(!darkMode);
+  }
+
+  //markdown config
+
   marked.setOptions({
     breaks:true
   });
+
+  //styles
 
   var inputStyle = {
     width: "500px",
@@ -81,6 +86,7 @@ function App() {
     
   };
 
+  //rendering
 
   return (
       <div className={`App  ${darkMode ? 'bg-dark m-0' : 'bg-white'}`}>
@@ -97,7 +103,7 @@ function App() {
                   <span>
                     <FontAwesomeIcon icon={faSun} />  Light Mode
                   </span>
-                ) : (
+                  ) : (
                   <span>
                     <FontAwesomeIcon icon={faMoon} /> Dark Mode
                   </span>
